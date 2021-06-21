@@ -46,8 +46,6 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
-		System.out.println(createUserRequest.getPassword());
-		System.out.println(createUserRequest.getConfirmPassword());
 		/*
 		if (createUserRequest.getPassword() == null
 				|| createUserRequest.getPassword() != createUserRequest.getConfirmPassword()) {
@@ -58,10 +56,7 @@ public class UserController {
 
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
-
-		String salt = BCrypt.gensalt();
-		user.setSalt(salt);
-		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword() + salt));
+		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 
 		Cart cart = new Cart();
 		cartRepository.save(cart);
