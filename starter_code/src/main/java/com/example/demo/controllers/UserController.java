@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import java.util.Optional;
 
+import org.codehaus.plexus.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,13 +47,15 @@ public class UserController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
-		/*
+
 		if (createUserRequest.getPassword() == null
-				|| createUserRequest.getPassword() != createUserRequest.getConfirmPassword()) {
+				|| !StringUtils.equals(createUserRequest.getPassword(), createUserRequest.getConfirmPassword())) {
 			return ResponseEntity.badRequest().build();
 		}
-		 */
-		//TODO check that the password is strong enough - https://www.baeldung.com/registration-password-strength-and-rules
+
+		if (createUserRequest.getPassword().length() < 8) {
+			return ResponseEntity.badRequest().build();
+		}
 
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
