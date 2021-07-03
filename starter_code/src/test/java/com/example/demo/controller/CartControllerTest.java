@@ -11,8 +11,8 @@ import com.example.demo.model.requests.ModifyCartRequest;
 import com.example.demo.util.TestUtils;
 import org.assertj.core.util.Lists;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -43,8 +43,8 @@ public class CartControllerTest {
     private static final CartRepository cartRepository = mock(CartRepository.class);
     private static final ItemRepository itemRepository = mock(ItemRepository.class);
 
-    @BeforeAll
-    public static void setUp() {
+    @Before
+    public void setUp() {
         cartController = new CartController();
         TestUtils.injectObjects(cartController, "cartRepository", cartRepository);
         TestUtils.injectObjects(cartController, "userRepository", userRepository);

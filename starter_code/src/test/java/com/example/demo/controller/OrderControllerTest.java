@@ -10,8 +10,9 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.util.TestUtils;
 import org.assertj.core.util.Lists;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 
 public class OrderControllerTest {
     private static final Long TEST_USER_ID = 1L;
@@ -39,7 +41,7 @@ public class OrderControllerTest {
     private final UserRepository userRepository = mock(UserRepository.class);
     private final OrderRepository orderRepository = mock(OrderRepository.class);
 
-    @BeforeEach
+    @Before
     public void setUp() {
         orderController = new OrderController();
         TestUtils.injectObjects(orderController, "userRepository", userRepository);

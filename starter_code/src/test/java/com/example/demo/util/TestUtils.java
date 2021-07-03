@@ -1,8 +1,13 @@
 package com.example.demo.util;
 
+import org.junit.Ignore;
+import org.junit.Test;
+
 import java.lang.reflect.Field;
 
+@Ignore
 public class TestUtils {
+
     public static void injectObjects(Object target, String fieldName, Object toInject) {
         boolean wasPrivate = false;
 
