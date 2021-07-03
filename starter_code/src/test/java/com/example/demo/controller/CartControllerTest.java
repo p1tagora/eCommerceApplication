@@ -12,7 +12,6 @@ import com.example.demo.util.TestUtils;
 import org.assertj.core.util.Lists;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -105,7 +104,7 @@ public class CartControllerTest {
         request.setQuantity(1);
         request.setUsername(TEST_USER);
 
-        ResponseEntity<Cart> response = cartController.removeFromcart(request);
+        ResponseEntity<Cart> response = cartController.removeFromCart(request);
 
         assertNotNull(response);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
